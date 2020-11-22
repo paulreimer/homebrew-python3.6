@@ -51,11 +51,7 @@ class OpensslAT10 < Formula
     ENV.delete("PERL")
     ENV.delete("PERL5LIB")
 
-    if MacOS.prefer_64_bit?
-      arch = Hardware::CPU.arch_64_bit
-    else
-      arch = Hardware::CPU.arch_32_bit
-    end
+    arch = Hardware::CPU.arch_64_bit
 
     ENV.deparallelize
     system "perl", "./Configure", *(configure_args + arch_args[arch])
